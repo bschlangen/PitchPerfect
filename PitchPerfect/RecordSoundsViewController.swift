@@ -29,11 +29,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordingButton.isEnabled = false
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     /******************************************************************************
      * recordAudio() 
      *
@@ -84,16 +79,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
      * Switch between UI states: Recording = ACTIVE or INACTIVE 
      ******************************************************************************/
     func setUIState(recording: RecordingState) {
-        if recording == .active {
-            recordingLabel.text = "Recording in Progress"
-            stopRecordingButton.isEnabled = true
-            recordButton.isEnabled = false
-        }
-        else if recording == .inactive {
-            recordButton.isEnabled = true
-            stopRecordingButton.isEnabled = false
-            recordingLabel.text = "Tap to Record"
-        }
+        recordingLabel.text = recording == .active ? "Recording in Progress" : "Tap to Record"
+        stopRecordingButton.isEnabled = recording == .active ? true : false
+        recordButton.isEnabled = recording == .active ? false : true
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
