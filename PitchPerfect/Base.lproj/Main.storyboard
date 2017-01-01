@@ -22,8 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOICE CHANGER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWx-bj-hv7">
+                                <rect key="frame" x="61" y="88" width="253" height="102"/>
+                                <color key="tintColor" red="0.11778430989999999" green="0.35864637310000003" blue="0.23024033169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="50"/>
+                                <color key="textColor" red="0.21996531859999999" green="0.90390220210000005" blue="0.76212697770000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.01089341752" green="0.79868286850000003" blue="0.7309702039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" red="0.35864637310000003" green="0.35864637310000003" blue="0.35864637310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-VZ-f3z">
-                                <rect key="frame" x="109.5" y="256" width="155" height="155"/>
+                                <rect key="frame" x="110" y="256" width="155" height="155"/>
                                 <state key="normal" image="RecordButton"/>
                                 <connections>
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QIc-Oe-7Ll"/>
@@ -52,8 +61,11 @@
                             <constraint firstItem="fMI-VZ-f3z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8PQ-MW-obG"/>
                             <constraint firstItem="Zd2-nk-JVB" firstAttribute="top" secondItem="fMI-VZ-f3z" secondAttribute="bottom" constant="8" id="BpA-Te-RXc"/>
                             <constraint firstItem="fpg-yg-RXp" firstAttribute="centerX" secondItem="Zd2-nk-JVB" secondAttribute="centerX" id="FWT-nG-2eF"/>
+                            <constraint firstItem="aWx-bj-hv7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="Itl-Hj-rdA"/>
                             <constraint firstItem="Zd2-nk-JVB" firstAttribute="centerX" secondItem="fMI-VZ-f3z" secondAttribute="centerX" id="KiX-5b-AfB"/>
                             <constraint firstItem="fpg-yg-RXp" firstAttribute="top" secondItem="Zd2-nk-JVB" secondAttribute="bottom" constant="8" id="Qmg-ey-Iym"/>
+                            <constraint firstItem="aWx-bj-hv7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rtx-02-SZr"/>
+                            <constraint firstItem="aWx-bj-hv7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="Wy3-S3-R03"/>
                             <constraint firstItem="fMI-VZ-f3z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iu5-Pu-f3D"/>
                             <constraint firstItem="fpg-yg-RXp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wNG-cH-boC"/>
                         </constraints>
