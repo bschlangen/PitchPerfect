@@ -17,6 +17,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder : AVAudioRecorder!
     
+    enum RecordingState {
+        case active, inactive
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // disable stop-recording-button
         stopRecordingButton.isEnabled = false
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear()
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,10 +41,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
      * has started.
      ******************************************************************************/
     @IBAction func recordAudio(_ sender: Any) {
-        recordingLabel.text = "Recording in Progress"
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
-        
+        // Set the UI to represent recording state
+        setUIState(recording: .active)
         // Setup the path for audio file
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
         let recordingName = "recordedVoice.wav"
@@ -74,13 +71,29 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(_ sender: Any) {
         
         // Enable/Disable the recording buttons
-        recordButton.isEnabled = true
-        stopRecordingButton.isEnabled = false
-        recordingLabel.text = "Tap to Record"
+        setUIState(recording: .inactive)
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
         print("stop recording")
+    }
+    
+    /******************************************************************************
+     * setUIState
+     *
+     * Switch between UI states: Recording = ACTIVE or INACTIVE 
+     ******************************************************************************/
+    func setUIState(recording: RecordingState) {
+        if recording == .active {
+            recordingLabel.text = "Recording in Progress"
+            stopRecordingButton.isEnabled = true
+            recordButton.isEnabled = false
+        }
+        else if recording == .inactive {
+            recordButton.isEnabled = true
+            stopRecordingButton.isEnabled = false
+            recordingLabel.text = "Tap to Record"
+        }
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
